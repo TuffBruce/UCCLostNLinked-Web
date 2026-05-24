@@ -1,4 +1,4 @@
-import { auth, db, storage } from "./firebase.js"
+import { auth, db, storage, model } from "./firebase.js" // local import of the "model" feature
 import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-storage.js"; // firebase CDN
 
@@ -12,6 +12,7 @@ const dateInput = document.getElementById("date-found");
 const potentialOwnerInput = document.getElementById("potential-owner-name");
 const imageInput = document.getElementById("item-photo");
 const buttonElement = document.getElementById("submit-btn");
+const categoryLoadingMessage = document.getElementById("category-loading-message");
 
 // Observe the authentication state of the user to setup form submission listener
 auth.onAuthStateChanged(async(user) => {
@@ -88,4 +89,31 @@ imageInput.addEventListener("change", () => {
         imagePreview.src = "";
         imagePreview.classList.add("hidden");
     }
+});
+
+/*
+AI enhancment:
+When the title input changes, call ai to choose a category,
+then update the category select input.
+*/
+titleInput.addEventListener("change", async () => {
+    const title = titleInput.value.trim();
+
+    // if the title is empty, skip the ai categorization
+    if (title === "") {
+        return; // exit the function early
+    }
+
+    // Provide a prompt that contains text
+    const prompt = `Based on the title of the item '${title}', which category does it belong to? Either clothing, shoes, bottles, stationary, or others if none of the previous categories apply. Do not include any other text in your answer`;
+
+    // To generate text output, call generateContent with the text input
+    categoryLoadingMessage.classList.remove("hidden"); // show the loading message
+    const result = await model.generateContent(prompt);
+    categoryLoadingMessage.classList.add("hidden"); // hide the loading message
+
+    const response = result.response;
+    const text = response.text();
+    console.log(text);
+    categoryInput.value = text;
 });

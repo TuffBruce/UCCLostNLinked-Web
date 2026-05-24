@@ -4,35 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
-    <title>Document</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <!-- Heading Bar -->
-    <nav class="dashboard-headbar">
-            <img src="/assets/images/LostNLinkedLogo.jpg" alt="Logo" class="dashboard-logo-container">
-        <div id="navbar-user-info">
-            <a href="settings.html" class = "nav-item">Settings</a>
-            <span id="user-email"></span>
-            <div class = "nav-item">
-                <button id="logout-btn">Logout</button>
+    <div class="dashboard-background">
+        <!-- Heading Bar -->
+        <nav class="dashboard-headbar">
+                <img src="/assets/images/LostNLinkedLogo.jpg" alt="Logo" class="dashboard-logo-container">
+            <div id="navbar-user-info">
+                <a href="settings.html" class = "nav-item">Settings</a>
+                <span id="user-email"></span>
+                <div class = "nav-item">
+                    <button id="logout-btn">Logout</button>
+                </div>
             </div>
+        </nav>
+
+        <!-- Welcome Message -->
+        <div class="dashboard-container">
+            <h1>Welcome, <span id="user-name"></span> to UCCLostNLinked</h1>
+            <h1><i>Connecting Our Community - Helping to Find the Lost Items & Worry Less</i></h1>
         </div>
-    </nav>
 
-    <!-- Welcome Message -->
-    <div class="dashboard-container">
-        <h1>Welcome, <span id="user-name"></span> to UCCLostNLinked</h1>
-        <h1><i>Connecting Our Community - Helping to Find the Lost Items & Worry Less</i></h1>
-    </div>
-
-    <!-- Navigation Button looking links -->
-    <div class="dashboard-nav-buttons">
-        <a href="upload-founditem.html" class="dashboard-btn">Upload Found Item</a>
-        <a href="founditems.html" class="dashboard-btn">Found Items</a>
-        <a href="report-lostitem.html" class="dashboard-btn">Report Lost Item</a>
-        <a href="lostitems.html" class="dashboard-btn">Lost Items</a>
-        <a href="gratitude.html" class="dashboard-btn">Gratitude Board</a>
+        <!-- Navigation Button looking links -->
+        <div class="dashboard-nav-buttons">
+            <a href="upload-founditem.html" class="dashboard-btn">Upload Found Item</a>
+            <a href="founditems.html" class="dashboard-btn">Found Items</a>
+            <a href="report-lostitem.html" class="dashboard-btn">Report Lost Item</a>
+            <a href="lostitems.html" class="dashboard-btn">Lost Items</a>
+            <a href="gratitude.html" class="dashboard-btn">Gratitude Board</a>
+        </div>
     </div>
 
     <!-- Scripts -->

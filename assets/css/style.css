@@ -7,8 +7,6 @@
 body { 
     margin: 0;
     background: linear-gradient(180deg, #1c598e 0%, #678cc1 100%) no-repeat fixed;
-    /* background-image: linear-gradient(180deg, #1c598ebb 0%, #678dc1ca 100%), url("/assets/images/UCCImage.jpg"); */
-    /* background-size: cover; */
     font-size: 16px;
     font-family: Georgia, 'Times New Roman', Times, serif sans-serif;
 }
@@ -176,7 +174,6 @@ form {
     text-decoration: underline;
 }
 
-
 /* Page Specific: Dashboard */
 .dashboard-headbar {
     display: flex;
@@ -188,6 +185,12 @@ form {
     padding: 15px 10px;
 }
 
+.dashboard-background {
+    margin: 0;
+    min-height: 100vh;
+    background-image: linear-gradient(180deg, #1c598ea9 0%, #678dc19e 100%), url("/assets/images/UCCImage.jpg");
+    background-size: cover;
+}
 
 .dashboard-container {
     max-width: 1200px;

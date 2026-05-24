@@ -34,9 +34,6 @@
             <!-- Item title -->
             <label for="item-title" class="form-label">Item Title / Name</label>
             <input type="text" id="item-title" class="form-input" required>
-            <!-- Item's Found Location-->
-            <label for="foundLocation" class="form-label">Location Found</label>
-            <input type="text" id="foundLocation" class="form-input" required>
             <!-- Item Category -->
             <label for="item-category" class="form-label">Item Category</label>
             <select id="item-category" class="form-input" required>
@@ -47,6 +44,12 @@
                 <option value="stationary">Stationary</option>
                 <option value="others">Others</option>
             </select>
+            <div 
+                id="category-loading-message" class="hidden">AI choosing category...
+            </div>
+            <!-- Item's Found Location-->
+            <label for="foundLocation" class="form-label">Location Found</label>
+            <input type="text" id="foundLocation" class="form-input" required>
             <!-- Date Found -->
             <label for="date-found" class="form-label">Date Found</label>
             <input type="date" id="date-found" class="form-input" required>
