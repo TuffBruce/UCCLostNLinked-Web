@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
+  <title>Login</title>
+  <!-- add links to css files -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+</head>
+
+<body>
+  <!-- Top Logo -->
+  <img src="/assets/images/LostNLinkedLogo.jpg" alt="Logo" class="logo-container">
+
+  <!-- Login Card Section -->
+  <div class="card">
+    <center><h1>Log In to your Account</h1></center>
+    <form id="login-form">
+      <!-- Email Input -->
+      <label for="email" class="form-label">Email</label>
+      <input type="email" id="email" class="form-input">
+      <!-- Password Input -->
+      <label for="password" class="form-label">Password</label>
+      <input type="password" id="password" class="form-input">
+      <!-- error label -->
+      <label id="error-label" class="error hidden"></label>
+      <button type="submit" class="btn">Log In</button>
+      <p>Don't have an account? <a href="signup.html" class="link">Sign up</a></p>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="/assets/js/login.js"></script>
+</body>
+
+</html>

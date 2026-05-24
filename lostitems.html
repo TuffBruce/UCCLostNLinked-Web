@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
+    <title>Lost Items</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="big-nav-item">LostNLinked</a>
+            <a href="upload-founditem.html" class="nav-item">Upload Found Item</a>
+            <a href="founditems.html" class="nav-item">Found Items</a>
+            <a href="report-lostitem.html" class="nav-item">Report Lost Item</a>
+            <a href="lostitems.html" class="nav-item">Lost Items</a>
+            <a href="gratitude.html" class="nav-item">Gratitude Board</a>
+        </div>
+        <div id="navbar-user-info">
+            <a href="settings.html" class = "nav-item">Settings</a>
+            <span id="user-email"></span>
+            <div class = "nav-item">
+                <button id="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Content of page -->
+    <main class="content">
+        <center><h1>Lost Items</h1></center>
+        <div id="items-container">
+            <!-- display the loaded data -->
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/navbar.js"></script>
+    <script type="module" src="/assets/js/lostitems.js"></script>
+</body>
+</html>

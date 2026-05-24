@@ -1,0 +1,354 @@
+* {
+    /* calculate width and height with padding and border */
+    box-sizing: border-box; 
+}
+
+
+body { 
+    margin: 0;
+    background: linear-gradient(180deg, #1c598e 0%, #678cc1 100%) no-repeat fixed;
+    /* background-image: linear-gradient(180deg, #1c598ebb 0%, #678dc1ca 100%), url("/assets/images/UCCImage.jpg"); */
+    /* background-size: cover; */
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif sans-serif;
+}
+
+
+
+/* form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-label {
+    font-size: 16px;
+}
+
+.form-input {
+    font-size: 16px;
+    padding: 5px;
+}
+
+/* buttons */
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    background-color: #95b3f4;
+    cursor: pointer;
+}
+
+/* hover effect on button */
+.btn:hover {
+    background-color: #bbcdf6;
+}
+
+.small-btn {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #95b3f4;
+    cursor: pointer;
+}
+
+/* utility classes */
+.hidden {
+    display: none;
+}
+
+/* text styles */
+.error {
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.success {
+    color: green;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.text-centered {
+    text-align: center;
+}
+
+
+
+/* card styles */
+.card {
+    color: black;
+    background-color: white;
+    width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
+/* navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0d3a61;
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 15px 10px;
+}
+.nav-item {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+.nav-item:hover {
+    background-color: lightblue;
+    color: darkblue;
+}
+.big-nav-item {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+#navbar-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+#user-email {
+    color: lightgray;
+    font-style: italic;
+}
+
+#logout-btn {
+    padding: 5px;
+    font-size: inherit;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+
+
+.link {
+    color: #95b3f4;
+    text-decoration: none;
+}
+
+
+
+/* Page Specific: Report List Item */
+
+#category-loading-message {
+    color: darkblue;
+    font-style: italic;
+}
+
+
+/*  */
+.settings-card {
+    margin: 0 20px;
+    margin-top: 20px;
+}
+
+#settings-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* generic success message */
+.success-login-link {
+    color: green;
+    text-decoration: underline;
+}
+
+
+/* Page Specific: Dashboard */
+.dashboard-headbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #fff;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 15px 10px;
+}
+
+
+.dashboard-container {
+    max-width: 1200px;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.dashboard-nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.dashboard-btn {
+    width: 300px;
+    height: 160px;
+    background-color : rgb(230, 223, 223);
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    background-color: lightblue;
+    transform: scale(1.05);
+}
+
+/* user info */
+#user-name {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    font-style: italic;
+}
+
+.dashboard-logo-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    border-radius : 10%;
+    gap: 10px;
+}
+
+
+/* login / signup */
+
+.logo-container {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 10%;
+    align-items: center;
+}
+
+/* Page Specific: Lost/Found Items */
+#items-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
+    row-gap: 30px;
+}   
+
+.item-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    color: black;
+    width: min(500px, 100%);
+    padding: 20px;
+    margin: 0 auto; /* center the card */
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 1);
+}
+
+.item-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    border:2px solid black;
+}
+
+.item-label {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.content {
+    color: white;
+    padding: 10px;
+}
+
+
+/* Page Specific: Gratitude Board */
+.suggestion-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    color: black;
+    width: min(500px, 100%);
+    padding: 20px;
+    margin: 0 auto; /* center the card */
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.suggestion-card:hover {
+    background-color: lightgoldenrodyellow;
+    transform: scale(1.05);
+}
+
+/* when clicked the state becomes active for a moment until releasing */
+.suggestion-card:active {
+    background-color: lightsalmon;
+}
+
+
+/* on screens between 0px to 900px apply this style */
+@media (max-width: 900px) {
+    /* navbar layout change on mobile */
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* settings layout change on mobile */
+    #settings-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}

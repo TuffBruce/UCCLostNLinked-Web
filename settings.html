@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
+    <title>Settings</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="big-nav-item">LostNLinked</a>
+            <a href="upload-founditems.html" class="nav-item">Upload Found Item</a>
+            <a href="founditems.html" class="nav-item">Found Items</a>
+            <a href="report-lostitem.html" class="nav-item">Report Lost Item</a>
+            <a href="lostitems.html" class="nav-item">Lost Items</a>
+            <a href="gratitude.html" class="nav-item">Gratitude Board</a>
+        </div>
+        <div id="navbar-user-info">
+            <a href="settings.html" class = "nav-item">Settings</a>
+            <span id="user-email"></span>
+            <div class = "nav-item">
+                <button id="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Content of page -->
+    <div class="content">
+        <h1 class="text-centered">Settings</h1>
+
+        <div id="settings-content">
+            <!-- Profile Information (first name, last name, role, grade/department) -->
+            <form id="profile-info-form" class="card settings-card">
+                <h2>Profile Information</h2>
+                <label for="first-name" class="form-label">First Name</label>
+                <input type="text" id="first-name" class="form-input" required>
+                <label for="last-name" class="form-label">Last Name</label>
+                <input type="text" id="last-name" class="form-input" required>
+                <!-- error label -->
+                <label id="profile-error-label" class="error hidden"></label>
+                <!-- success label -->
+                <label id="profile-success-label" class="success hidden"></label>
+                <button type="submit" id="submit-btn" class="btn">Save Changes</button>
+            </form>
+            
+            <!-- Email / Password -->
+            <form id="email-password-form" class="card settings-card">
+                <h2>Email & Password</h2>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-input" required disabled>
+                <label for="current-password" class="form-label">Current Password</label>
+                <input type="password" id="current-password" class="form-input" required>
+                <!-- new password and confirm password -->
+                <label for="new-password" class="form-label">New Password</label>
+                <input type="password" id="new-password" class="form-input" required>
+                <label for="confirm-new-password" class="form-label">Confirm New Password</label>
+                <input type="password" id="confirm-new-password" class="form-input" required>
+                <!-- error label -->
+                <label id="password-error-label" class="error hidden"></label>
+                <!-- success label -->
+                <label id="password-success-label" class="success hidden"></label>
+                <!-- button -->
+                <button type="submit" id="submit-btn" class="btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/navbar.js"></script>
+    <script  type="module" src="/assets/js/settings.js"></script>
+
+</body>
+</html>

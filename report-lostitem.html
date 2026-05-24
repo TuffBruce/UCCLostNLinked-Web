@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
+    <title>Report Lost Item</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="big-nav-item">LostNLinked</a>
+            <a href="upload-founditem.html" class="nav-item">Upload Found Item</a>
+            <a href="founditems.html" class="nav-item">Found Items</a>
+            <a href="report-lostitem.html" class="nav-item">Report Lost Item</a>
+            <a href="lostitems.html" class="nav-item">Lost Items</a>
+            <a href="gratitude.html" class="nav-item">Gratitude Board</a>
+        </div>
+        <div id="navbar-user-info">
+            <a href="settings.html" class = "nav-item">Settings</a>
+            <span id="user-email"></span>
+            <div class = "nav-item">
+                <button id="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Content of page -->
+    <div class="content">
+        <form id="report-list-item-form" class="card">
+            <h1>Report Lost Item</h1>
+            <!-- Item title -->
+            <label for="item-title" class="form-label">Item Title / Name</label>
+            <input type="text" id="item-title" class="form-input" required>
+            <!-- Item Category -->
+            <label for="item-category" class="form-label">Item Category</label>
+            <select id="item-category" class="form-input" required>
+                <option value="" hidden></option>
+                <option value="clothing">Clothing</option>
+                <option value="shoes">Shoes</option>
+                <option value="bottles">Bottles</option>
+                <option value="stationary">Stationary</option>
+                <option value="others">Others</option>
+            </select>
+            <div id="category-loading-message" class="hidden">AI choosing category...</div>
+
+            <!-- Item's Last Known Location -->
+            <label for="last-known-location" class="form-label">Last Known Location</label>
+            <input type="text" id="last-known-location" class="form-input" required>
+            <!-- Date Lost -->
+            <label for="date-lost" class="form-label">Date Lost</label>
+            <input type="date" id="date-lost" class="form-input" required>
+            <!-- Add Photo -->
+            <label for="item-photo" class="form-label">Add Photo</label>
+            <input type="file" id="item-photo" class="form-input" accept="image/*" required>
+
+            <!-- Image Preview -->
+            <img id="image-preview" class="hidden" style="max-width: 100%;">
+
+            <button type="submit" id="submit-btn" class="btn">Report Lost Item</button>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/navbar.js"></script>
+    <script type="module" src="/assets/js/report-lostitem.js"></script>
+</body>
+</html>

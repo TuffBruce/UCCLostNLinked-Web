@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
+    <title>Gratitude Board</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="big-nav-item">LostNLinked</a>
+            <a href="upload-founditems.html" class="nav-item">Upload Found Item</a>
+            <a href="founditems.html" class="nav-item">Found Items</a>
+            <a href="report-lostitem.html" class="nav-item">Report Lost Item</a>
+            <a href="lostitems.html" class="nav-item">Lost Items</a>
+            <a href="gratitude.html" class="nav-item">Gratitude Board</a>
+        </div>
+        <div id="navbar-user-info">
+            <a href="settings.html" class = "nav-item">Settings</a>
+            <span id="user-email"></span>
+            <div class = "nav-item">
+                <button id="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Content of page  -->
+    <div class="content">
+        <h1 class="text-centered">Gratitude Board</h1>
+        <form id="gratitude-form" class="card">
+            <label for="gratitude-message" class="form-label">Share your gratitude:</label>
+            <textarea id="gratitude-message" class="form-input" placeholder="What are you grateful for today?" required></textarea>
+            <button type="submit" class="btn">Submit</button>
+            <!-- thank you message -->
+            <p id="success-message" class="success hidden">
+                Thank you for sharing your gratitude!
+            </p>
+        </form>
+
+        <!-- suggestions -->
+        <div id="suggestions">
+            <h2 class="text-centered">Gratitude Suggestions</h2>
+            <ul>
+                <li id="suggestion-1" class="suggestion-card">I'm grateful for the support of my friends and family.</li>
+                <li id="suggestion-2" class="suggestion-card">I'm grateful for the opportunity to learn and grow every day.</li>
+                <li id="suggestion-3" class="suggestion-card">I'm grateful for the beauty of nature around me.</li>
+                <li id="suggestion-4" class="suggestion-card">I'm grateful for the kindness of strangers.</li>
+                <li id="suggestion-5" class="suggestion-card">I'm grateful for my health and well-being.</li>
+            </ul>
+        </div> 
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/navbar.js"></script>
+    <script type="module" src="/assets/js/gratitude.js"></script>
+</body>
+</html>
