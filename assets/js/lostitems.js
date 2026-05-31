@@ -1,21 +1,27 @@
 import { auth, db } from "./firebase.js"
 import { getDocs, collection } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
 
-// Step 1: get all lost items from firestore
+// Querys all lost items from firestore
 const lostItemsCollection = collection(db, "lostItems");
 const snapshot = await getDocs(lostItemsCollection);
 // convert the snapshot docs to an array of javascript objects
 const lostItems = snapshot.docs.map(doc => doc.data());
 // sort the items in descending order by date (newest items first)
-lostItems.sort((a, b) => b.date.toDate() - a.date.toDate()); // convert Firestore timestamps to JavaScript Date objects for comparison
-console.log(lostItems); // log the lost items to the console to check if we got the data
+// Convert Firestore timestamps to JavaScript Date objects for comparison
+lostItems.sort((a, b) => b.date.toDate() - a.date.toDate());
+// log the lost items to the console to check if we got the data
+console.log(lostItems);
 
-// Step 2: display the data in the HTML
+// Displays the data in the HTML
 const container = document.getElementById("items-container");
 lostItems.forEach(item => {
+    // Create a new div for each item card
     const itemElement = document.createElement("div");
+    // uses the style.css "item-card" id to style the item card
     itemElement.classList.add("item-card");
-    const lostDate = item.date.toDate(); // convert Firestore timestamp to JavaScript Date object
+    // Convert Firestore timestamp to JavaScript Date object
+    const lostDate = item.date.toDate();
+    // All the item card's information
     itemElement.innerHTML = `
         <img src="${item.imageURL}" alt="${item.itemTitle}" class="item-image"/>
         <div>
@@ -26,5 +32,6 @@ lostItems.forEach(item => {
             <p><label class="item-label">Owner:</label> ${item.lostItemOwnerName}</p>
         </div>
     `;
+    // adds each iteration of the item card from firebase into the lost items screen
     container.appendChild(itemElement);
 });

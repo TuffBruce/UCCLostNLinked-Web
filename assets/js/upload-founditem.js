@@ -39,7 +39,7 @@ auth.onAuthStateChanged(async(user) => {
             // get extension of the image file
             const extension = imageFile.name.split(".").pop(); // get the extension of the file
 
-            // upload the image to the firsbase storage and generate a URL for it
+            // upload the image to the firebase storage and generate a URL for it
             const storageRef = ref(storage, "foundItems/" + photoID + "." + extension);
 
             // upload the file to the path in storage
@@ -91,11 +91,7 @@ imageInput.addEventListener("change", () => {
     }
 });
 
-/*
-AI enhancment:
-When the title input changes, call ai to choose a category,
-then update the category select input.
-*/
+// AI Filter Feature: When the title input changes, call ai to choose a category, then update the category select input.
 titleInput.addEventListener("change", async () => {
     const title = titleInput.value.trim();
 
@@ -104,16 +100,22 @@ titleInput.addEventListener("change", async () => {
         return; // exit the function early
     }
 
-    // Provide a prompt that contains text
-    const prompt = `Based on the title of the item '${title}', which category does it belong to? Either clothing, shoes, bottles, stationary, or others if none of the previous categories apply. Do not include any other text in your answer`;
+    // Provide a prompt to the AI to determine the category
+    const prompt = `Based on the title of the item '${title}', which category does it belong to? 
+    Either clothing, shoes, bottles, stationary, or others if none of the previous categories apply. 
+    Do not include any other text in your answer`;
 
     // To generate text output, call generateContent with the text input
     categoryLoadingMessage.classList.remove("hidden"); // show the loading message
     const result = await model.generateContent(prompt);
     categoryLoadingMessage.classList.add("hidden"); // hide the loading message
 
+    // Querying the AI response
     const response = result.response;
+    // Setting the "text" variable as the AI response
     const text = response.text();
+    // Testing the feature works in console
     console.log(text);
+    // Changing the original category select input to the AI selected category
     categoryInput.value = text;
 });

@@ -72,31 +72,29 @@ auth.onAuthStateChanged(async (user) => {
 });
 
 
-/*
-Image Preview:
-Listen when the image changes, and display it as a preview before submission.
-*/
+//Image Preview: Listen when the image changes, and display it as a preview before submission.
 imageInput.addEventListener("change", () => {
+    // Querying the user's file from their file input
     const file = imageInput.files[0];
+    // Querys the image preview element from HTML
     const imagePreview = document.getElementById("image-preview");
     if (file) {
+        // Reads the image file and makes the image preview visible on the screen
         const reader = new FileReader();
         reader.onload = () => {
             imagePreview.src = reader.result;
             imagePreview.classList.remove("hidden");
         };
+        // Converts the image file in a readable URL in Firebase
         reader.readAsDataURL(file);
-    } else { // when clicking cancel
+    } else {
+        // If the user clicks cancel, it clears the data of the image preview and hides it so it is not visible
         imagePreview.src = "";
         imagePreview.classList.add("hidden");
     }
 });
 
-/*
-AI enhancment:
-When the title input changes, call ai to choose a category,
-then update the category select input.
-*/
+// AI Filter Feature: When the title input changes, call ai to choose a category, then update the category select input.
 titleInput.addEventListener("change", async () => {
     const title = titleInput.value.trim();
 
@@ -105,17 +103,23 @@ titleInput.addEventListener("change", async () => {
         return; // exit the function early
     }
 
-    // Provide a prompt that contains text
-    const prompt = `Based on the title of the item '${title}', which category does it belong to? Either clothing, shoes, bottles, stationary, or others if none of the previous categories apply. Do not include any other text in your answer`;
+    // Provide a prompt to the AI to determine the category
+    const prompt = `Based on the title of the item '${title}', which category does it belong to? 
+    Either clothing, shoes, bottles, stationary, or others if none of the previous categories apply. 
+    Do not include any other text in your answer`;
 
     // To generate text output, call generateContent with the text input
     categoryLoadingMessage.classList.remove("hidden"); // show the loading message
     const result = await model.generateContent(prompt);
     categoryLoadingMessage.classList.add("hidden"); // hide the loading message
 
+    // Querying the AI response
     const response = result.response;
+    // Setting the "text" variable as the AI response
     const text = response.text();
+    // Testing the feature works in console
     console.log(text);
+    // Changing the original category select input to the AI selected category
     categoryInput.value = text;
 });
 
