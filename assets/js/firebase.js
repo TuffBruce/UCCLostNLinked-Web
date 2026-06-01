@@ -1,4 +1,4 @@
-// The code from this page was a necessary copy-paste from Firebase
+// The code from this script was a necessary copy-paste from Firebase to link Firebase to my website.
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";

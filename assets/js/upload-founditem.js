@@ -1,9 +1,9 @@
-import { auth, db, storage, model } from "./firebase.js" // local import of the "model" feature
+// This script is responsible for handling the user's uploading of a found item on the "Upload Found Item" page. This includes the importing of Gemini as an AI Model for item categorization
+import { auth, db, storage, model } from "./firebase.js"
 import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-storage.js"; // firebase CDN
 
-
-// Select the elements from the HTML
+// Select the elements from HTML
 const formElement = document.getElementById("upload-list-item-form");
 const titleInput = document.getElementById("item-title");
 const locationInput = document.getElementById("foundLocation");
@@ -19,39 +19,44 @@ auth.onAuthStateChanged(async(user) => {
     if (user) {
         console.log("user is logged in");
 
+        // Queries the user ID and data from Firestore to be displayed in the found item card.
         const userDoc = await getDoc(doc(db, "users", user.uid));
-        const userData = userDoc.data(); // the data from firestore user doc
+        const userData = userDoc.data();
 
         formElement.addEventListener("submit", async (event) => {
-            event.preventDefault(); // prevent form from refreshing page
-            buttonElement.disabled = true; // does not allow the user to click the button again while it is being submitted
+            // prevent form from refreshing page
+            event.preventDefault();
+            // does not allow the user to click the button again while it is being submitted
+            buttonElement.disabled = true;
             // extract the values of the inputs
             const title = titleInput.value;
             const location = locationInput.value;
             const category = categoryInput.value;
             const dateFound = dateInput.value;
-            const potentialOwnerName = potentialOwnerInput.value || "N/A"; // if the user does not input anything, the found item card will show N/A for the potential owner name section
+            // if the user does not input anything, the found item card will show N/A for the potential owner name section
+            const potentialOwnerName = potentialOwnerInput.value || "N/A"; 
             const imageFile = imageInput.files[0];
 
-            // create an id for the photo
-            const photoID = crypto.randomUUID(); // generate a random id for the photo
+            // create an random id for the photo
+            const photoID = crypto.randomUUID();
 
             // get extension of the image file
-            const extension = imageFile.name.split(".").pop(); // get the extension of the file
+            const extension = imageFile.name.split(".").pop();
 
             // upload the image to the firebase storage and generate a URL for it
             const storageRef = ref(storage, "foundItems/" + photoID + "." + extension);
 
             // upload the file to the path in storage
             await uploadBytes(storageRef, imageFile);
-            const imageURL = await getDownloadURL(storageRef); // get the download URL of the uploaded image
+            // get the download URL of the uploaded image
+            const imageURL = await getDownloadURL(storageRef);
 
-            // get the collection
+            // retrieve the collection from Firebase
             const foundItemsCollection = collection(db, "foundItems");
 
             // make a timestamp from the date value
             // make the date local time at midnight
-            const [year, month, day] = dateFound.split("-"); // split the date string
+            const [year, month, day] = dateFound.split("-");
             const date = new Date(Number(year), Number(month) - 1, Number(day));
 
             // construct the found item object to be saved in firestore
@@ -62,7 +67,8 @@ auth.onAuthStateChanged(async(user) => {
                 date: date,
                 lostItemOwnerName: potentialOwnerName,
                 imageURL: imageURL,
-                founderName: userData.firstName + ' ' + userData.lastName // use the displayName from the user data
+                // use the displayName from the user data
+                founderName: userData.firstName + ' ' + userData.lastName
             };
 
             // add the new found item to the collection
@@ -74,18 +80,23 @@ auth.onAuthStateChanged(async(user) => {
     }
 });
 
-// listen when the image changes, and preview it
+//Image Preview: Listen when the image changes, and display it as a preview before submission.
 imageInput.addEventListener("change", () => {
+    // Querying the user's file from their file input
     const file = imageInput.files[0];
+    // Queries the image preview element from HTML
     const imagePreview = document.getElementById("image-preview");
     if (file) {
+        // Reads the image file and makes the image preview visible on the screen
         const reader = new FileReader();
         reader.onload = () => {
             imagePreview.src = reader.result;
             imagePreview.classList.remove("hidden");
         };
+        // Converts the image file in a readable URL in Firebase
         reader.readAsDataURL(file);
-    } else { // when clicking cancel
+    } else {
+        // If the user clicks cancel, it clears the data of the image preview and hides it so it is not visible
         imagePreview.src = "";
         imagePreview.classList.add("hidden");
     }

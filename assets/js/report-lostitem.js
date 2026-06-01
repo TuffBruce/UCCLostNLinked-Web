@@ -1,4 +1,5 @@
-import { auth, db, storage, model } from "./firebase.js" // local import  
+// This script is responsible for handling the user's reporting of a lost item on the "Report Lost Item" page. This includes the importing of Gemini as an AI Model for item categorization
+import { auth, db, storage, model } from "./firebase.js"
 import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-storage.js"; // firebase CDN
 
@@ -37,7 +38,7 @@ auth.onAuthStateChanged(async (user) => {
             // get extension of the image file
             const extension = imageFile.name.split(".").pop(); // get the extension of the file
 
-            // upload the image to the firsbase storage and generate a URL for it
+            // upload the image to the firebase storage and generate a URL for it
             const storageRef = ref(storage, "lostItems/" + photoID + "." + extension);
 
             // upload the file to the path in storage
@@ -76,7 +77,7 @@ auth.onAuthStateChanged(async (user) => {
 imageInput.addEventListener("change", () => {
     // Querying the user's file from their file input
     const file = imageInput.files[0];
-    // Querys the image preview element from HTML
+    // Queries the image preview element from HTML
     const imagePreview = document.getElementById("image-preview");
     if (file) {
         // Reads the image file and makes the image preview visible on the screen

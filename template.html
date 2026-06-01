@@ -1,3 +1,5 @@
+<!-- This page is the template which I used throughout my coding. When creating a new page, I copy and pasted the essential navbar which saved time as well as avoided unnecessary errors -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,13 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
     <title>PAGE ITEM</title>
+    <!-- Link HTML to CSS File -->
     <link rel="stylesheet" href="/assets/css/style.css">
     
 </head>
 <body>
-    <!-- regular navbar -->
+    <!-- NavBar -->
     <nav class="navbar">
+        <!-- This div has a class which links to CSS for styling purposes -->
         <div class="nav-left">
+            <!-- These are navigation links that direct the user to different pages when clicked on -->
             <a href="index.html" class="big-nav-item">LostNLinked</a>
             <a href="upload-founditem.html" class="nav-item">Upload Found Item</a>
             <a href="founditems.html" class="nav-item">Found Items</a>
@@ -19,6 +24,7 @@
             <a href="lostitems.html" class="nav-item">Lost Items</a>
             <a href="gratitude.html" class="nav-item">Gratitude Board</a>
         </div>
+        <!-- This div has an Id which links it to JavaScript for functionality purposes -->
         <div id="navbar-user-info">
             <a href="settings.html" class = "nav-item">Settings</a>
             <span id="user-email"></span>
@@ -32,6 +38,7 @@
         <h1>CONTENT</h1>
     </div>
 
+    <!-- These section links the page to any JavaScript scripts -->
     <script type="module" src="/assets/js/navbar.js"></script>
 </body>
 </html>

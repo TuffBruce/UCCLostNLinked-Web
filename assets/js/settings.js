@@ -1,3 +1,4 @@
+// This script is responsible for handling any of the user's desired changes to their account info on the "Settings" page.
 import { auth, db } from "./firebase.js"
 import { getDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
 import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js"; // firebase CDN
@@ -121,7 +122,7 @@ emailPasswordForm.addEventListener("submit", async (event) => {
         console.error("Password update failed:", error);
         passwordErrorLabel.classList.remove('hidden');
         
-        // see: https://firebase.google.com/docs/reference/assets/js/auth#autherrorcodes
+        // These are all the Firebase error messages that could occur if user makes an error during the account recreation.
         if (error.code === 'auth/email-already-in-use') {
             passwordErrorLabel.textContent = "Email already in use";
         } else if (error.code === 'auth/weak-password') {

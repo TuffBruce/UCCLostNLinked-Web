@@ -1,3 +1,4 @@
+// This script is responsible for handling the user's signup authentication on the SignUp page.
 import { auth, db } from "./firebase.js"
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js"; // firebase CDN
 import { setDoc, doc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
@@ -55,7 +56,7 @@ signUpForm.addEventListener("submit",async function(event){
 
     // Call Firebase to register the user
     try {
-        // see: https://firebase.google.com/docs/auth/web/start#sign_up_a_new_user
+        // firebase's createUserWithEmailAndPassword function is used here to store the user's signup info in Firebase
         const authUser = await createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value);
         console.log("authUser: ", authUser);
 
@@ -84,7 +85,7 @@ signUpForm.addEventListener("submit",async function(event){
         console.log(error.code);
         errorLabel.classList.remove('hidden');
         
-        // check the error code against firebase's known error codes
+        // All the possible Firebase error messages that could occur during signup.
         if (error.code === 'auth/email-already-in-use') {
             errorLabel.textContent = "Email already in use";
         } else if (error.code === 'auth/weak-password') {

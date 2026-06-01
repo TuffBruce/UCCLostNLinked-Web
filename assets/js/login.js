@@ -1,3 +1,4 @@
+// This script is responsible for handling the login authentication procedure on the login page.
 import { auth } from "./firebase.js"
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js"; // firebase CDN
 
@@ -9,7 +10,8 @@ const errorLabel = document.getElementById("error-label");
 
 // Add event listener to the login form
 loginForm.addEventListener("submit", async function(event) {
-    event.preventDefault() // prevents the form from refreshing the page
+    // prevents the form from refreshing the page
+    event.preventDefault()
     console.log("clicking button");
     console.log(emailInput.value);
     console.log(passwordInput.value);
@@ -27,7 +29,8 @@ loginForm.addEventListener("submit", async function(event) {
         console.log(error.code);
         errorLabel.classList.remove('hidden');
         errorLabel.textContent = error.message;
-        if (error.code === 'auth/invalid-credential') { // the most common error for wrong email or password
+        // All the possible error messages that could occur when trying to login
+        if (error.code === 'auth/invalid-credential') { 
             errorLabel.textContent = "Invalid email or password";
         } else {
             errorLabel.textContent = "An error occurred";

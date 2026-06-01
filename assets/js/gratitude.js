@@ -1,8 +1,9 @@
+// This script is responsible for handling the user's inputted gratitude message in the gratitude board. 
 import { auth, db,} from "./firebase.js"
 import { collection, addDoc, getDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
 import { showSuccessMessage } from "./success-message.js";
 
-// Select elements from the HTML
+// Query all the elements from the HTML
 const suggestion1 = document.getElementById('suggestion-1');
 const suggestion2 = document.getElementById('suggestion-2');
 const suggestion3 = document.getElementById('suggestion-3');
@@ -11,7 +12,7 @@ const suggestion5 = document.getElementById('suggestion-5');
 const textarea = document.getElementById('gratitude-message');
 const gratitudeForm = document.getElementById('gratitude-form');
 
-// Add click event listeners
+// Add click event listeners for each of the preset gratitude messages
 suggestion1.addEventListener('click', () => {
     textarea.value = suggestion1.textContent;
 });
@@ -40,8 +41,9 @@ auth.onAuthStateChanged(async (user) => {
         gratitudeForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             
-            // get the message content
+            // Read the user's message content 
             const message = textarea.value;
+            // Save the message to the Firestore collection "msgs" with user ID and date
             const gratitudeMsgsCollection = collection(db, "msgs");
             await addDoc(gratitudeMsgsCollection, {
                 message: message,
@@ -49,7 +51,8 @@ auth.onAuthStateChanged(async (user) => {
                 timestamp: serverTimestamp()
             });
 
-            textarea.value = ""; // clear the textarea after submitting
+            // clear the textarea after submitting
+            textarea.value = "";
             showSuccessMessage(true);
 
         });

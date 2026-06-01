@@ -1,3 +1,5 @@
+/* This is the main CSS file I used for this website. */
+
 * {
     /* calculate width and height with padding and border */
     box-sizing: border-box; 
@@ -254,18 +256,6 @@ form {
     align-items: center;
 }
 
-.auth-background {
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-/* Page Specific: Dashboard/Login/Signup */
-/* .ucc-college-background {
-    margin: 0;
-    min-height: 100vh;
-    background-image: linear-gradient(180deg, #1c598ea9 0%, #678dc19e 100%), url("/assets/images/UCCImage.jpg");
-    background-size: cover;
-} */
-
 /* Page Specific: Lost/Found Items */
 #items-container {
     display: grid;
@@ -311,7 +301,6 @@ form {
     padding: 10px;
 }
 
-
 /* Page Specific: Gratitude Board */
 .suggestion-card {
     display: flex;
@@ -340,7 +329,7 @@ form {
 }
 
 
-/* on screens between 0px to 900px apply this style */
+/* For screens between 0px to 900px, apply this style. This is important as it allows the layout to adapt to mobile devices or small computers as well. */
 @media (max-width: 900px) {
     /* navbar layout change on mobile */
     .navbar {

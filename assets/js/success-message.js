@@ -1,6 +1,4 @@
-// This script provides a universal "success message" 
-// whenever a user completes a feature, 
-// such as logging in or uploading a found item.
+// This script provides a universal "success message" whenever a user completes a feature, such as logging in or uploading a found item.
 
 // Displays the success message
 function showSuccessMessage(disappear) {
