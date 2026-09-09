@@ -33,7 +33,7 @@ const model = getGenerativeModel(ai, { model: "gemini-2.5-flash" });
 // Create a ReCaptchaEnterpriseProvider instance
 // using your reCAPTCHA Enterprise key and pass it to `initializeAppCheck()`.
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaEnterpriseProvider(""),
+  provider: new ReCaptchaEnterpriseProvider("6LcjELEtAAAAAF3SyQ-Oq54ZQoy68sJFGvMA_ywF"),
   isTokenAutoRefreshEnabled: true // Set to true to allow auto-refresh.
 });
 
