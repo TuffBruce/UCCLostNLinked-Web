@@ -1,6 +1,7 @@
 // The code from this script was a necessary copy-paste from Firebase to link Firebase to my website.
 
 // Import the functions you need from the SDKs you need
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "https://www.gstatic.com/firebasejs/12.12.1/app-check";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
@@ -28,4 +29,15 @@ const storage = getStorage(app);
 const ai = getAI(app, { backend: new VertexAIBackend() });
 // Create a `GenerativeModel` instance with a model that supports your use case
 const model = getGenerativeModel(ai, { model: "gemini-2.5-flash" });
+
+// Create a ReCaptchaEnterpriseProvider instance
+// using your reCAPTCHA Enterprise key and pass it to `initializeAppCheck()`.
+const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaEnterpriseProvider("6LcjELEtAAAAAF3SyQ-Oq54ZQoy68sJFGvMA_ywF"),
+  isTokenAutoRefreshEnabled: true // Set to true to allow auto-refresh.
+});
+
+
+
+
 export { auth, db, storage, model } // Export so another file can import it
