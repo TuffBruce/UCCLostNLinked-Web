@@ -28,7 +28,7 @@ const storage = getStorage(app);
 // Initialize the Vertex AI Gemini API backend service
 const ai = getAI(app, { backend: new VertexAIBackend('global') });
 // Create a `GenerativeModel` instance with a model that supports your use case
-const model = getGenerativeModel(ai, { model: "gemini-2.5-flash" });
+const model = getGenerativeModel(ai, { model: "gemini-3.8-flash" });
 
 // Create a ReCaptchaEnterpriseProvider instance
 // using your reCAPTCHA Enterprise key and pass it to `initializeAppCheck()`.

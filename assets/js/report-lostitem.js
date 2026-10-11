@@ -1,5 +1,6 @@
 // This script is responsible for handling the user's reporting of a lost item on the "Report Lost Item" page. This includes the importing of Gemini as an AI Model for item categorization
-import { auth, db, storage, model } from "./firebase.js"
+import { auth, db, storage } from "./firebase.js"
+import { setupAICategory } from "./ai-category.js";
 import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-storage.js"; // firebase CDN
 
@@ -95,33 +96,5 @@ imageInput.addEventListener("change", () => {
     }
 });
 
-// AI Filter Feature: When the title input changes, call ai to choose a category, then update the category select input.
-titleInput.addEventListener("change", async () => {
-    const title = titleInput.value.trim();
-
-    // if the title is empty, skip the ai categorization
-    if (title === "") {
-        return; // exit the function early
-    }
-
-    // Provide a prompt to the AI to determine the category
-    const prompt = `Based on the title of the item '${title}', which category does it belong to? 
-    Either clothing, shoes, bottles, stationary, or others if none of the previous categories apply. 
-    Do not include any other text in your answer`;
-
-    // To generate text output, call generateContent with the text input
-    categoryLoadingMessage.classList.remove("hidden"); // show the loading message
-    const result = await model.generateContent(prompt);
-    categoryLoadingMessage.classList.add("hidden"); // hide the loading message
-
-    // Querying the AI response
-    const response = result.response;
-    // Setting the "text" variable as the AI response
-    const text = response.text();
-    // Testing the feature works in console
-    console.log(text);
-    // Changing the original category select input to the AI selected category
-    categoryInput.value = text;
-});
-
-
+// AI Filter Feature: When the setupAICategory function is called, it will set up the event listener for the title input.
+setupAICategory(titleInput, categoryInput, categoryLoadingMessage);
