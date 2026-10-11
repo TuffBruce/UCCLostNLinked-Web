@@ -1,6 +1,6 @@
 // This script is responsible for handling the user's inputted gratitude message in the gratitude board. 
 import { auth, db,} from "./firebase.js"
-import { collection, addDoc, getDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
+import { collection, addDoc, getDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 import { showSuccessMessage } from "./success-message.js";
 
 // Query all the elements from the HTML

@@ -1,6 +1,6 @@
 // This script is responsible for displaying all the lost items added into Firebase onto the "Lost Items" page.
 import { auth, db } from "./firebase.js"
-import { getDocs, collection } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
+import { getDocs, collection } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 
 // Queries all lost items from firestore
 const lostItemsCollection = collection(db, "lostItems");

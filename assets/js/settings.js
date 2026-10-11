@@ -1,7 +1,7 @@
 // This script is responsible for handling any of the user's desired changes to their account info on the "Settings" page.
 import { auth, db } from "./firebase.js"
-import { getDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
-import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js"; // firebase CDN
+import { getDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
+import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"; // firebase CDN
 
 
 // Select the elements from the HTML

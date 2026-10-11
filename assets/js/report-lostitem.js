@@ -1,8 +1,8 @@
 // This script is responsible for handling the user's reporting of a lost item on the "Report Lost Item" page. This includes the importing of Gemini as an AI Model for item categorization
 import { auth, db, storage } from "./firebase.js"
 import { setupAICategory } from "./ai-category.js";
-import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-storage.js"; // firebase CDN
+import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
+import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js"; // firebase CDN
 
 // Querying elements from the HTML
 const formElement = document.getElementById("report-list-item-form");

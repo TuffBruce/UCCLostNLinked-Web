@@ -1,6 +1,6 @@
 // This script is responsible for solely handling the "logout" button functionality and the display of the user's email on the navbar of most pages.
 import { auth, db } from "./firebase.js"
-import { signOut } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js"; // firebase CDN
+import { signOut } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"; // firebase CDN
 
 // Query the elements from HTML
 const logoutBtn = document.getElementById("logout-btn");

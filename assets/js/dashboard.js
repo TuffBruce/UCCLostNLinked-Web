@@ -1,7 +1,7 @@
 // This script is responsible for displaying the user's name and role on the dashboard page. 
 import { auth, db } from "./firebase.js"
-import { signOut } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js"; // firebase CDN
-import { getDoc, doc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
+import { signOut } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"; // firebase CDN
+import { getDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 
 // select the element from the HTML
 const userName = document.getElementById("user-name");

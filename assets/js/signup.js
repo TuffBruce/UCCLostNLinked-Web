@@ -1,7 +1,7 @@
 // This script is responsible for handling the user's signup authentication on the SignUp page.
 import { auth, db } from "./firebase.js"
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js"; // firebase CDN
-import { setDoc, doc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js"; // firebase CDN
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"; // firebase CDN
+import { setDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 import { showSuccessMessage } from "./success-message.js";
 
 // Select the elements from the HTML

@@ -1,6 +1,6 @@
 // This script is responsible for handling the login authentication procedure on the login page.
 import { auth } from "./firebase.js"
-import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js"; // firebase CDN
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"; // firebase CDN
 
 // Select elements from the HTML
 const loginForm = document.getElementById("login-form");
