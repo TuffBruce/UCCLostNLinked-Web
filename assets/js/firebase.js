@@ -21,7 +21,15 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);  
+const app = initializeApp(firebaseConfig);
+
+// Initialize App Check FIRST, before any other Firebase service (especially AI).
+// The AI only looks for App Check once, when it is created.
+const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaEnterpriseProvider("6Le-KbgtAAAAALf_3EZJ6KzCLMUrocA_z7rLowJ7"),
+  isTokenAutoRefreshEnabled: true // Set to true to allow auto-refresh.
+});
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
@@ -29,15 +37,5 @@ const storage = getStorage(app);
 const ai = getAI(app, { backend: new VertexAIBackend('global') });
 // Create a `GenerativeModel` instance with a model that supports your use case
 const model = getGenerativeModel(ai, { model: "gemini-3.8-flash" });
-
-// Create a ReCaptchaEnterpriseProvider instance
-// using your reCAPTCHA Enterprise key and pass it to `initializeAppCheck()`.
-const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaEnterpriseProvider("6Le-KbgtAAAAALf_3EZJ6KzCLMUrocA_z7rLowJ7"),
-  isTokenAutoRefreshEnabled: true // Set to true to allow auto-refresh.
-});
-
-
-
 
 export { auth, db, storage, model } // Export so another file can import it
