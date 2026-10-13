@@ -1,6 +1,7 @@
 // This script is responsible for handling the user's uploading of a found item on the "Upload Found Item" page. This includes the importing of Gemini as an AI Model for item categorization
 import { auth, db, storage } from "./firebase.js"
 import { setupAICategory } from "./ai-category.js";
+import { setupAIImageSuggest } from "./ai-image-suggest.js";
 import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js"; // firebase CDN
 
@@ -105,3 +106,5 @@ imageInput.addEventListener("change", () => {
 
 // AI Filter Feature: When the setupAICategory function is called, it will set up the event listener for the title input.
 setupAICategory(titleInput, categoryInput, categoryLoadingMessage);
+// AI Image Feature: suggest a title and category from the uploaded photo
+setupAIImageSuggest(imageInput, titleInput, categoryInput, categoryLoadingMessage);
