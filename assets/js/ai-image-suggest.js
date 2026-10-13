@@ -65,7 +65,10 @@ function setupAIImageSuggest(imageInput, titleInput, categoryInput, loadingMessa
         {"title": "<short item title, 2 to 6 words, e.g. Navy blue UCC hoodie>", "category": "<one of: clothing, shoes, bottles, stationary, others>"}
         Include the colour and brand in the title if visible. Do not include any person's name in the title, even if a name is visible on the item.`;
 
-        loadingMessage.classList.remove("hidden"); // show the loading message
+        // Temporarily change the loading message text for photo analysis, then show it
+        const originalMessage = loadingMessage.textContent;
+        loadingMessage.textContent = "AI analyzing photo... please wait a moment";
+        loadingMessage.classList.remove("hidden");
         try {
             const base64Image = await resizeImageToBase64(file);
             const result = await model.generateContent([
@@ -89,6 +92,7 @@ function setupAIImageSuggest(imageInput, titleInput, categoryInput, loadingMessa
             console.error("AI image suggestion failed:", error);
         } finally {
             loadingMessage.classList.add("hidden"); // always hide the loading message
+            loadingMessage.textContent = originalMessage; // put back "AI choosing category" for the title feature
         }
     });
 }
