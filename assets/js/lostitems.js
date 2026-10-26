@@ -1,5 +1,5 @@
 // This script is responsible for displaying all the lost items added into Firebase onto the "Lost Items" page.
-import { auth, db } from "./firebase.js"
+import { db } from "./firebase.js"
 import { getDocs, collection } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 
 // Queries all lost items from firestore
@@ -30,7 +30,6 @@ lostItems.forEach(item => {
             <p><label class="item-label">Lost Date:</label> ${lostDate.toLocaleDateString()}</p>
             <p><label class="item-label">Last Known Location:</label> ${item.lastKnownLocation}</p>
             <p><label class="item-label">Category:</label> ${item.lostItemCategory}</p>
-            <p><label class="item-label">Owner:</label> ${item.lostItemOwnerName}</p>
         </div>
     `;
     // adds each iteration of the item card from firebase into the lost items screen

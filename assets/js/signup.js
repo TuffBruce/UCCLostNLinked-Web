@@ -37,6 +37,16 @@ roleSelect.addEventListener("change", (event) => {
         departmentLabel.classList.remove('hidden');
         departmentInput.classList.remove('hidden');
         departmentInput.required = true;
+        // if role chosen is "parent" hide both grade and department inputs
+    } else if (selection === 'Parent') {
+        gradeLabel.classList.add('hidden');
+        gradeInput.classList.add('hidden');
+        gradeInput.required = false;
+        gradeInput.value = "";
+        departmentLabel.classList.add('hidden');
+        departmentInput.classList.add('hidden');
+        departmentInput.required = false;
+        departmentInput.value = "";
     }
 });
 
@@ -45,7 +55,6 @@ signUpForm.addEventListener("submit",async function(event){
     event.preventDefault() // prevents the form from refreshing the page
     console.log("clicking button");
     console.log(emailInput.value);
-    console.log(passwordInput.value);
     console.log(firstNameInput.value);
     console.log(lastNameInput.value);
     console.log(gradeInput.value);
@@ -79,6 +88,7 @@ signUpForm.addEventListener("submit",async function(event){
 
         // on success signup redirect to login page
         showSuccessMessage(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
         signUpForm.reset();  
     } catch(error) {
         // signup failed

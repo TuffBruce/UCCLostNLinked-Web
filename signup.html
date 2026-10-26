@@ -17,6 +17,10 @@
   <!-- Sign-up Card -->
   <div class="card" id="signup-card">
     <center><h1>Create an Account</h1></center>
+    <div id="success-message" class="success hidden">
+      Your account was created successfully!
+      Please <a href="login.html" class="success-login-link">login</a> to access your dashboard.
+    </div>
     <form id="signup-form">
       <!-- Email Input -->
       <label for="email" class="form-label">Email</label>
@@ -35,6 +39,7 @@
       <select id="role" class="form-input" required>
         <option value="" hidden></option>
         <option value="Student">Student</option>
+        <option value="Parent">Parent</option>
         <option value="Faculty">Faculty</option>
       </select>
       
@@ -47,10 +52,7 @@
       <label id="error-label" class="error hidden"></label>
       <button type="submit" class="btn">Create your Account</button>
       <p>Already have an account? <a href="login.html" class="link">Login</a></p>
-      <div id="success-message" class="success hidden">
-        Your account was created successfully!
-        Please <a href="login.html" class="success-login-link">login</a> to access your dashboard.
-      </div>
+      
     </form>
   </div>
 

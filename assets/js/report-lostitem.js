@@ -62,7 +62,6 @@ auth.onAuthStateChanged(async (user) => {
                 lostItemCategory: category,
                 date: date,
                 imageURL: imageURL,
-                lostItemOwnerName: userData.firstName + ' ' + userData.lastName // use the displayName from the user data
             };
 
             // add the new lost item to the collection

@@ -12,7 +12,7 @@ import { getAI, getGenerativeModel, VertexAIBackend } from "https://www.gstatic.
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBoAPNE-pkgRIiLa91qPPPC4kDylhW4to0",
-  authDomain: "ucclostnlinked.firebaseapp.com",
+  authDomain: "ucclostnlinked.firebase pp.com",
   projectId: "ucclostnlinked",
   storageBucket: "ucclostnlinked.firebasestorage.app",
   messagingSenderId: "826555702875",

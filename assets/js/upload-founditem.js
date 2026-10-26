@@ -11,7 +11,6 @@ const titleInput = document.getElementById("item-title");
 const locationInput = document.getElementById("foundLocation");
 const categoryInput = document.getElementById("item-category");
 const dateInput = document.getElementById("date-found");
-const potentialOwnerInput = document.getElementById("potential-owner-name");
 const imageInput = document.getElementById("item-photo");
 const buttonElement = document.getElementById("submit-btn");
 const categoryLoadingMessage = document.getElementById("category-loading-message");
@@ -35,8 +34,6 @@ auth.onAuthStateChanged(async(user) => {
             const location = locationInput.value;
             const category = categoryInput.value;
             const dateFound = dateInput.value;
-            // if the user does not input anything, the found item card will show N/A for the potential owner name section
-            const potentialOwnerName = potentialOwnerInput.value || "N/A"; 
             const imageFile = imageInput.files[0];
 
             // create an random id for the photo
@@ -67,10 +64,7 @@ auth.onAuthStateChanged(async(user) => {
                 foundLocation: location,
                 foundItemCategory: category,
                 date: date,
-                lostItemOwnerName: potentialOwnerName,
                 imageURL: imageURL,
-                // use the displayName from the user data
-                founderName: userData.firstName + ' ' + userData.lastName
             };
 
             // add the new found item to the collection

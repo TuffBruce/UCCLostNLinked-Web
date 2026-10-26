@@ -1,5 +1,5 @@
 // This script is responsible for displaying all the found items added into Firebase onto the "Found Items" page.
-import { auth, db } from "./firebase.js"
+import { db } from "./firebase.js"
 import { getDocs, collection } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 
 // Queries all found items from firestore
@@ -30,8 +30,6 @@ foundItems.forEach(item => {
             <p><label class="item-label">Found Date:</label> ${foundDate.toLocaleDateString()}</p>
             <p><label class="item-label">Location Found:</label> ${item.foundLocation}</p>
             <p><label class="item-label">Category:</label> ${item.foundItemCategory}</p>
-            <p><label class="item-label">Potential Owner:</label> ${item.lostItemOwnerName}</p>
-            <p><label class="item-label">Item Finder:</label> ${item.founderName}</p>
         </div>
     `;
     // adds each iteration of the item card from firebase into the lost items screen
