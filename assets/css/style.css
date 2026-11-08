@@ -158,6 +158,26 @@ form {
     font-style: italic;
 }
 
+/* Larger "Choose File" button for photo uploads, matching the .btn style */
+input[type="file"] {
+    font-size: 16px;
+}
+
+input[type="file"]::file-selector-button {
+    padding: 10px 20px;
+    margin-right: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    font-family: inherit;
+    background-color: #95b3f4;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #bbcdf6;
+}
+
 
 /*  */
 .settings-card {

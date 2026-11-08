@@ -10,6 +10,7 @@ const formElement = document.getElementById("report-list-item-form");
 const titleInput = document.getElementById("item-title");
 const locationInput = document.getElementById("last-known-location");
 const categoryInput = document.getElementById("item-category");
+const featuresInput = document.getElementById("distinguishing-features");
 const dateInput = document.getElementById("date-lost");
 const imageInput = document.getElementById("item-photo");
 const buttonElement = document.getElementById("submit-btn");
@@ -31,6 +32,7 @@ auth.onAuthStateChanged(async (user) => {
             const title = titleInput.value;
             const location = locationInput.value;
             const category = categoryInput.value;
+            const features = featuresInput.value.trim();
             const dateLost = dateInput.value;
             const imageFile = imageInput.files[0];
 
@@ -60,6 +62,7 @@ auth.onAuthStateChanged(async (user) => {
                 itemTitle: title,
                 lastKnownLocation: location,
                 lostItemCategory: category,
+                distinguishingFeatures: features,
                 date: date,
                 imageURL: imageURL,
             };
