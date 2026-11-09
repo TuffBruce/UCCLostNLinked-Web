@@ -110,3 +110,5 @@ function renderCategoryView({ items, categoryField, buildCard }) {
         noResultsMessage.classList.toggle("hidden", visibleCount > 0);
     });
 }
+
+export { renderCategoryView, escapeHTML };
