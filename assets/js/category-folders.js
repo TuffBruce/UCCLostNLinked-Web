@@ -100,7 +100,8 @@ function renderCategoryView({ items, categoryField, buildCard }) {
 
         cards.forEach(card => {
             const matches = card.title.includes(query);
-            card.element.classList.toggle("hidden", !matches);
+            // hide or show the card directly (the .item-card style would override the "hidden" class)
+            card.element.style.display = matches ? "" : "none";
             if (matches) {
                 visibleCount++;
             }
