@@ -321,33 +321,6 @@ input[type="file"]::file-selector-button:hover {
     padding: 10px;
 }
 
-/* Page Specific: Gratitude Board */
-.suggestion-card {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background-color: white;
-    color: black;
-    width: min(500px, 100%);
-    padding: 20px;
-    margin: 0 auto; /* center the card */
-    margin-top: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.suggestion-card:hover {
-    background-color: lightgoldenrodyellow;
-    transform: scale(1.05);
-}
-
-/* when clicked the state becomes active for a moment until releasing */
-.suggestion-card:active {
-    background-color: lightsalmon;
-}
-
 
 /* For screens between 0px to 900px, apply this style. This is important as it allows the layout to adapt to mobile devices or small computers as well. */
 @media (max-width: 900px) {

@@ -4,11 +4,11 @@
 
 // The categories, matching the values used in the upload/report forms
 const CATEGORIES = [
-    { value: "clothing", label: "Clothing", icon: "👕" },
-    { value: "shoes", label: "Shoes", icon: "👟" },
-    { value: "bottles", label: "Bottles", icon: "🧴" },
-    { value: "stationary", label: "Stationery", icon: "✏️" },
-    { value: "others", label: "Others", icon: "📦" }
+    { value: "clothing", label: "Clothing"},
+    { value: "shoes", label: "Shoes"},
+    { value: "bottles", label: "Bottles"},
+    { value: "stationary", label: "Stationery"},
+    { value: "others", label: "Others"}
 ];
 
 // Make sure user-typed text (titles, locations) is shown as plain text, never run as HTML code
