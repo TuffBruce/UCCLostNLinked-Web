@@ -47,7 +47,7 @@ function renderCategoryView({ items, categoryField, buildCard }) {
             folder.classList.add("dashboard-btn"); // reuse the dashboard button style
             folder.innerHTML = `
                 <span class="text-centered">
-                    ${category.icon} ${category.label}<br>
+                    ${category.label}<br>
                     <small>${count} item${count === 1 ? "" : "s"}</small>
                 </span>
             `;
@@ -63,7 +63,7 @@ function renderCategoryView({ items, categoryField, buildCard }) {
     header.classList.add("content", "text-centered");
     header.innerHTML = `
         <a href="?" class="small-btn" style="color:black; text-decoration:none;">← All categories</a>
-        <h2>${selectedCategory.icon} ${selectedCategory.label}</h2>
+        <h2>${selectedCategory.label}</h2>
     `;
     container.before(header);
 
