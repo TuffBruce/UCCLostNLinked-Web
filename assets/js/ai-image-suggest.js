@@ -80,8 +80,8 @@ function setupAIImageSuggest(imageInput, titleInput, categoryInput, loadingMessa
 
             const suggestion = parseAIJson(text);
 
-            // Only fill in the title if the user hasn't typed one already
-            if (titleInput.value.trim() === "" && suggestion.title) {
+            // Always replace the title with the AI's suggestion for the new photo
+            if (suggestion.title) {
                 titleInput.value = suggestion.title;
             }
             if (suggestion.category) {
