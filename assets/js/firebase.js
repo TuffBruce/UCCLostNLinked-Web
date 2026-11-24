@@ -6,6 +6,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
 // Import of the Generative AI Model
 import { getAI, getGenerativeModel, VertexAIBackend } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-ai.js";
 
@@ -29,6 +30,9 @@ const appCheck = initializeAppCheck(app, {
   provider: new ReCaptchaEnterpriseProvider("6Le-KbgtAAAAALf_3EZJ6KzCLMUrocA_z7rLowJ7"),
   isTokenAutoRefreshEnabled: true // Set to true to allow auto-refresh.
 });
+
+// Google Analytics: counts visitors and page views (no login needed)
+const analytics = getAnalytics(app);
 
 const auth = getAuth(app);
 const db = getFirestore(app);

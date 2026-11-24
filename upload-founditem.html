@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
-    <title>UploadFound Item</title>
+    <title>Upload Found Item</title>
     <!-- Link HTML to CSS File -->
     <link rel="stylesheet" href="/assets/css/style.css">
     
@@ -24,6 +24,12 @@
     <div class="content">
         <form id="upload-list-item-form" class="card">
             <h1>Upload Found Item</h1>
+            <!-- TUBS Access Code -->
+            <div id="access-code-section">
+                <label for="access-code" class="form-label">TUBS Access Code</label>
+                <input type="password" id="access-code" class="form-input" style="width: 100%;" autocomplete="off">
+                <label id="access-code-error" class="error hidden"></label>
+            </div>
             <!-- Item title -->
             <label for="item-title" class="form-label">Item Title / Name</label>
             <input type="text" id="item-title" class="form-input" required>
