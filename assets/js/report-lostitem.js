@@ -1,8 +1,8 @@
 // This script is responsible for handling the user's reporting of a lost item on the "Report Lost Item" page. This includes the importing of Gemini as an AI Model for item categorization
-import { auth, db, storage } from "./firebase.js"
+import { db, storage } from "./firebase.js"
 import { setupAICategory } from "./ai-category.js";
 import { setupAIImageSuggest } from "./ai-image-suggest.js";
-import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js"; // firebase CDN
 
 // Querying elements from the HTML
@@ -17,62 +17,61 @@ const buttonElement = document.getElementById("submit-btn");
 const categoryLoadingMessage = document.getElementById("category-loading-message");
 
 
-// Observe the user's authentication state 
-auth.onAuthStateChanged(async (user) => {
-    if (user) {
-        console.log("user is logged in");
+// Form submission: no login needed, anyone can report a lost item
+formElement.addEventListener("submit", async (event) => {
+    event.preventDefault(); // prevent form from refreshing page
+    buttonElement.disabled = true; // does not allow the user to click the button again while it is being submitted
 
-        const userDoc = await getDoc(doc(db, "users", user.uid));
-        const userData = userDoc.data(); // the data from firestore user doc
+    try {
+        // extract the values of the inputs
+        const title = titleInput.value;
+        const location = locationInput.value;
+        const category = categoryInput.value;
+        const features = featuresInput.value.trim();
+        const dateLost = dateInput.value;
+        const imageFile = imageInput.files[0];
 
-        formElement.addEventListener("submit", async (event) => {
-            event.preventDefault(); // prevent form from refreshing page
-            buttonElement.disabled = true; // does not allow the user to click the button again while it is being submitted
-            // extract the values of the inputs
-            const title = titleInput.value;
-            const location = locationInput.value;
-            const category = categoryInput.value;
-            const features = featuresInput.value.trim();
-            const dateLost = dateInput.value;
-            const imageFile = imageInput.files[0];
+        // create an id for the photo
+        const photoID = crypto.randomUUID(); // generate a random id for the photo
 
-            // create an id for the photo
-            const photoID = crypto.randomUUID(); // generate a random id for the photo
+        // get extension of the image file
+        const extension = imageFile.name.split(".").pop(); // get the extension of the file
 
-            // get extension of the image file
-            const extension = imageFile.name.split(".").pop(); // get the extension of the file
+        // upload the image to the firebase storage and generate a URL for it
+        const storageRef = ref(storage, "lostItems/" + photoID + "." + extension);
 
-            // upload the image to the firebase storage and generate a URL for it
-            const storageRef = ref(storage, "lostItems/" + photoID + "." + extension);
+        // upload the file to the path in storage
+        await uploadBytes(storageRef, imageFile);
+        const imageURL = await getDownloadURL(storageRef); // get the download URL of the uploaded image
 
-            // upload the file to the path in storage
-            await uploadBytes(storageRef, imageFile);
-            const imageURL = await getDownloadURL(storageRef); // get the download URL of the uploaded image
+        // get the collection
+        const lostItemsCollection = collection(db, "lostItems");
 
-            // get the collection
-            const lostItemsCollection = collection(db, "lostItems");
+        // make a timestamp from the date value
+        // make the date local time at midnight
+        const [year, month, day] = dateLost.split("-"); // split the date string
+        const date = new Date(Number(year), Number(month) - 1, Number(day));
 
-            // make a timestamp from the date value
-            // make the date local time at midnight
-            const [year, month, day] = dateLost.split("-"); // split the date string
-            const date = new Date(Number(year), Number(month) - 1, Number(day));
+        // construct the lost item object to be saved in firestore
+        const newLostItem = {
+            itemTitle: title,
+            lastKnownLocation: location,
+            lostItemCategory: category,
+            distinguishingFeatures: features,
+            date: date,
+            imageURL: imageURL,
+        };
 
-            // construct the lost item object to be saved in firestore
-            const newLostItem = {
-                itemTitle: title,
-                lastKnownLocation: location,
-                lostItemCategory: category,
-                distinguishingFeatures: features,
-                date: date,
-                imageURL: imageURL,
-            };
+        // add the new lost item to the collection
+        await addDoc(lostItemsCollection, newLostItem);
 
-            // add the new lost item to the collection
-            await addDoc(lostItemsCollection, newLostItem);
-
-            // navigate to the lost items page
-            window.location.href = "lostitems.html";
-        });
+        // navigate to the lost items page
+        window.location.href = "lostitems.html";
+    } catch (error) {
+        // If anything fails, let the user know and allow them to try again
+        console.error("Reporting lost item failed:", error);
+        alert("Sorry, something went wrong while reporting your item. Please try again.");
+        buttonElement.disabled = false;
     }
 });
 
