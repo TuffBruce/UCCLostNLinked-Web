@@ -13,7 +13,6 @@ const TUBS_EMAIL = "ucctubs@gmail.com";
 // Select the elements from HTML
 const formElement = document.getElementById("upload-list-item-form");
 const titleInput = document.getElementById("item-title");
-const locationInput = document.getElementById("foundLocation");
 const categoryInput = document.getElementById("item-category");
 const dateInput = document.getElementById("date-found");
 const imageInput = document.getElementById("item-photo");
@@ -39,7 +38,6 @@ formElement.addEventListener("submit", async (event) => {
     try {
         // extract the values of the inputs
         const title = titleInput.value;
-        const location = locationInput.value;
         const category = categoryInput.value;
         const dateFound = dateInput.value;
         const imageFile = imageInput.files[0];
@@ -69,7 +67,6 @@ formElement.addEventListener("submit", async (event) => {
         // construct the found item object to be saved in firestore
         const newFoundItem = {
             itemTitle: title,
-            foundLocation: location,
             foundItemCategory: category,
             date: date,
             imageURL: imageURL,

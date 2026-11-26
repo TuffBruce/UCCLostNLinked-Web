@@ -23,7 +23,6 @@ renderCategoryView({
         <div>
             <h2>${escapeHTML(item.itemTitle)}</h2>
             <p><label class="item-label">Found Date:</label> ${item.date.toDate().toLocaleDateString()}</p>
-            <p><label class="item-label">Location Found:</label> ${escapeHTML(item.foundLocation)}</p>
             <p><label class="item-label">Category:</label> ${escapeHTML(item.foundItemCategory)}</p>
         </div>
     `
