@@ -1,21 +1,17 @@
 // This script is responsible for handling the uploading of a found item on the "Upload Found Item" page.
-// Only TUBS can upload found items: they enter the TUBS access code, which signs into the shared TUBS account behind the scenes.
+// Only TUBS can use this page: anyone who hasn't entered the TUBS access code is sent to the "TUBS Access" page first.
 // This includes the importing of Gemini as an AI Model for item categorization
 import { auth, db, storage } from "./firebase.js"
 import { setupAICategory } from "./ai-category.js";
 import { setupAIImageSuggest } from "./ai-image-suggest.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"; // firebase CDN
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js"; // firebase CDN
-import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js"; // firebase CDN
 
-// The shared TUBS account's email (created in the Firebase console). The access code is this account's password.
+// The shared TUBS account's email (must match the one in tubs-access.js)
 const TUBS_EMAIL = "ucctubs@gmail.com";
 
 // Select the elements from HTML
 const formElement = document.getElementById("upload-list-item-form");
-const accessCodeSection = document.getElementById("access-code-section");
-const accessCodeInput = document.getElementById("access-code");
-const accessCodeError = document.getElementById("access-code-error");
 const titleInput = document.getElementById("item-title");
 const locationInput = document.getElementById("foundLocation");
 const categoryInput = document.getElementById("item-category");
@@ -24,43 +20,14 @@ const imageInput = document.getElementById("item-photo");
 const buttonElement = document.getElementById("submit-btn");
 const categoryLoadingMessage = document.getElementById("category-loading-message");
 
-// If TUBS already entered the code in this browser session, hide the access code box so they don't need to retype it
+// Only show the form to TUBS. Everyone else is sent to the access code page.
 auth.onAuthStateChanged((user) => {
     if (user && user.email === TUBS_EMAIL) {
-        accessCodeSection.classList.add("hidden");
-        accessCodeInput.required = false;
+        formElement.classList.remove("hidden");
     } else {
-        accessCodeSection.classList.remove("hidden");
-        accessCodeInput.required = true;
+        window.location.href = "tubs-access.html";
     }
 });
-
-// Checks the access code by signing into the TUBS account. Returns true if the code is correct.
-async function verifyAccessCode() {
-    // Already verified earlier in this session
-    if (auth.currentUser && auth.currentUser.email === TUBS_EMAIL) {
-        return true;
-    }
-
-    accessCodeError.classList.add("hidden");
-    try {
-        // Stay verified only until the browser is closed
-        await setPersistence(auth, browserSessionPersistence);
-        await signInWithEmailAndPassword(auth, TUBS_EMAIL, accessCodeInput.value);
-        return true;
-    } catch (error) {
-        console.log(error.code);
-        accessCodeError.classList.remove("hidden");
-        if (error.code === "auth/invalid-credential" || error.code === "auth/wrong-password") {
-            accessCodeError.textContent = "Incorrect access code";
-        } else if (error.code === "auth/too-many-requests") {
-            accessCodeError.textContent = "Too many attempts. Please wait a few minutes and try again.";
-        } else {
-            accessCodeError.textContent = "Could not check the access code. Please try again.";
-        }
-        return false;
-    }
-}
 
 // Form submission
 formElement.addEventListener("submit", async (event) => {
@@ -68,14 +35,6 @@ formElement.addEventListener("submit", async (event) => {
     event.preventDefault();
     // does not allow the user to click the button again while it is being submitted
     buttonElement.disabled = true;
-
-    // Stop here if the access code is wrong
-    const codeIsCorrect = await verifyAccessCode();
-    if (!codeIsCorrect) {
-        buttonElement.disabled = false;
-        window.scrollTo({ top: 0, behavior: "smooth" }); // show the error at the top of the form
-        return;
-    }
 
     try {
         // extract the values of the inputs

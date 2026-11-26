@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/images/LostNLinkedLogo.jpg">
+    <title>TUBS Access Code</title>
+    <!-- Link HTML to CSS File -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="big-nav-item">Out Of The Blue</a>
+            <a href="upload-founditem.html" class="nav-item">Upload Found Item</a>
+            <a href="founditems.html" class="nav-item">Found Items</a>
+            <a href="report-lostitem.html" class="nav-item">Report Lost Item</a>
+            <a href="lostitems.html" class="nav-item">Lost Items</a>
+        </div>
+    </nav>
+    <!-- Content of page -->
+    <div class="content">
+        <form id="tubs-access-form" class="card">
+            <h1>TUBS Access</h1>
+            <p>Uploading found items is for <strong>TUBS only</strong>. You need the <strong>TUBS access code</strong> to continue.</p>
+            <!-- TUBS Access Code -->
+            <label for="access-code" class="form-label">TUBS Access Code</label>
+            <input type="password" id="access-code" class="form-input" autocomplete="off" required>
+            <!-- error label -->
+            <label id="access-code-error" class="error hidden"></label>
+            <button type="submit" id="access-btn" class="btn">Continue</button>
+            <p>Lost something? <a href="report-lostitem.html" class="link">Report a lost item</a> instead, no code needed.</p>
+        </form>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/assets/js/tubs-access.js"></script>
+</body>
+</html>
