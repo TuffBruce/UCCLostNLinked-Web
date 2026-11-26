@@ -78,7 +78,15 @@ form {
     text-align: center;
 }
 
-
+/* Inventory reset disclaimer */
+.disclaimer {
+    font-size: 15px;
+    font-style: italic;
+    text-align: center;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 10px auto;
+}
 
 /* card styles */
 .card {
@@ -219,7 +227,7 @@ form {
 /* small "powered by" line under the main title, like on other websites */
 .powered-by {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 300;          /* thin and light */
     letter-spacing: 3px;       /* wide, label-like spacing */
     opacity: 0.85;             /* slightly faded */
@@ -241,8 +249,8 @@ form {
     font-size: 20px;
 }
 
-.email-link {
-    color: inherit; /* keep the email white like the rest of the text */
+.email-text {
+    text-decoration: underline; /* underlined, but not a clickable link */
 }
 
 .dashboard-headbar {
@@ -368,6 +376,26 @@ form {
     padding: 10px;
 }
 
+/* Submit button: greyed out until every required field is filled in, then highlighted */
+#upload-list-item-form .btn,
+#report-list-item-form .btn {
+    background-color: #d6d6d6;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+#upload-list-item-form:valid .btn,
+#report-list-item-form:valid .btn {
+    background-color: #95b3f4;
+    color: black;
+    box-shadow: 0 0 12px rgba(149, 179, 244, 0.9); /* soft blue glow */
+    transform: scale(1.02);
+}
+
+#upload-list-item-form:valid .btn:hover,
+#report-list-item-form:valid .btn:hover {
+    background-color: #bbcdf6;
+}
 
 /* For screens between 0px to 900px, apply this style. This is important as it allows the layout to adapt to mobile devices or small computers as well. */
 @media (max-width: 900px) {
